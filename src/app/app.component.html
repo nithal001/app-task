@@ -1,5 +1,6 @@
 <div class="main">
     <app-header></app-header>
+    {{filterData}}
     <section class="content">
         <section class="content__compare-block">
             <div class="content__compare-left">
@@ -9,9 +10,9 @@
             <div class="content__compare-right">
                 <ul>
                     <li><a class="content__compare-link">RANGE</a></li>
-                    <li><a class="content__compare-link">RANGE</a></li>
-                    <li><a class="content__compare-link">RANGE</a></li>
-                    <li><a class="content__compare-link">RANGE</a></li>
+                    <li><a class="content__compare-link" (click)="onClick(day)">DAY</a></li>
+                    <li><a class="content__compare-link" (click)="onClick(week)">WEEK</a></li>
+                    <li><a class="content__compare-link" (click)="onClick(month)">MONTH</a></li>
                 </ul>
                 <img src="" alt="" />
             </div>
@@ -22,19 +23,19 @@
                 <select name="brand">
                     <option>Brand1</option>
                 </select>
-            <div>
-            <div class="content__form-field">
-                <label class="content__form-label">Brandssssssssss</label>
-                <select name="brand">
-                    <option>Brand1></option>
-                </select>
-            <div>
+            </div>
             <div class="content__form-field">
                 <label class="content__form-label">Brand</label>
                 <select name="brand">
                     <option>Brand1></option>
                 </select>
-            <div>
+            </div>
+            <div class="content__form-field">
+                <label class="content__form-label">Brand</label>
+                <select name="brand">
+                    <option>Brand1></option>
+                </select>
+            </div>
         </section>
         <section class="content__wrap-survey">
             <section class="content__user-details">
