@@ -7,12 +7,14 @@ import { GlobalNavigationComponent } from './global-navigation/global-navigation
 import { HeaderComponent } from './header/header.component';
 
 import { CommonService } from './common.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     GlobalNavigationComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
