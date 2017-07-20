@@ -25,6 +25,14 @@ export class AppComponent implements OnInit {
   timeTotalData: Array<boolean> = [];
   dataTotalUsers: Array<boolean> = [];
 
+  // Pie
+  public osChartLabels:string[] = ['IOS', 'Android'];
+  public osChartData:Array<boolean> = [];
+  public osChartType:string = 'pie';
+  public deviceChartLabels:string[] = ['Samsung', 'Apple', 'Nexus', 'Blackberry'];
+  public deviceChartData:Array<boolean> = [];
+  public deviceChartType:string = 'pie';
+
   constructor(private commonService: CommonService) {}
 
   ngOnInit() {
@@ -33,25 +41,28 @@ export class AppComponent implements OnInit {
 
   getFullData() {
       this.commonService.getData()
-        .subscribe(data => this.data = data)
+        .subscribe(data => this.data = data);
   }
 
   onClick(value: string) {
-      this.filterData = this.data[0][value].length ? this.data[0][value] : [];
-      this.dataUsage = this.filterData[0].dataUsage;
-      this.users = this.filterData[1].users;
-      this.userData = this.filterData[2].userData;
-      this.osChart = [this.filterData[3].os[0].ios, this.filterData[3].os[1].android];
-      this.totalChart = this.filterData[3].os[2].total;
-      this.deviceType = [this.filterData[4].deviceType[0].samsung, this.filterData[4].deviceType[1].apple, this.filterData[4].deviceType[2].nexus, this.filterData[4].deviceType[3].blackberry];
-      this.deviceTypeTotal = this.filterData[4].deviceType[4].total;
-      this.dataUsageTotal = this.filterData[5].dataUsageTime[0].data;
-      this.dataUsageTime = this.filterData[5].dataUsageTime[1].time;
-      this.usersTimeTotal = this.filterData[6].usersTime[0].users;
-      this.usersTime = this.filterData[6].usersTime[1].time;
-      this.usersTotalData = this.filterData[7].usersDataTime[0].users;
-      this.timeTotalData = this.filterData[7].usersDataTime[1].time;
-      this.dataTotalUsers = this.filterData[7].usersDataTime[2].data;
+      this.filterData = this.data[value] ? this.data[value] : [];
+      this.dataUsage = this.filterData.dataUsage;
+      this.users = this.filterData.users;
+      this.userData = this.filterData.userData;
+      this.osChart = [this.filterData.os.ios, this.filterData.os.android];
+      this.totalChart = this.filterData.os.total;
+      this.deviceType = [this.filterData.deviceType.samsung, this.filterData.deviceType.apple, this.filterData.deviceType.nexus, this.filterData.deviceType.blackberry];
+      this.deviceTypeTotal = this.filterData.deviceType.total;
+      this.dataUsageTotal = this.filterData.dataUsageTime.data;
+      this.dataUsageTime = this.filterData.dataUsageTime.time;
+      this.usersTimeTotal = this.filterData.usersTime.users;
+      this.usersTime = this.filterData.usersTime.time;
+      this.usersTotalData = this.filterData.usersDataTime.users;
+      this.timeTotalData = this.filterData.usersDataTime.time;
+      this.dataTotalUsers = this.filterData.usersDataTime.data;
+
+      this.osChartData = this.osChart;
+      this.deviceChartData = this.deviceType;
   }
 
   generateArray(obj){
@@ -59,6 +70,5 @@ export class AppComponent implements OnInit {
  }
 
   onSubmit() {
-      alert('yes');
   }
 }
